@@ -22,21 +22,21 @@ function findClosestGuardBFS(graph, N, row, column) {
     var i = row * N + column;
     console.log('\nBFS starting: i=' + i);
     var queue = new Queue();
+    graph.vertices[i].distance = 0;
     var current = graph.vertices[i];
     visit(graph, i);
-    current.distance = 0;
+
     queue.insert(current);
-    var distance = 0;
     while (!queue.isEmpty()) {
-        distance++;
         current = queue.remove().data;
         i = getAdjUnvisitedVertex(graph, current.index);
         while (i !== -1) {
             var newVertex = graph.vertices[i];
+            newVertex.distance = current.distance + 1;
             var letter = visit(graph, i);
             if (letter === 'g') {
                 graph.reset();
-                return distance;
+                return current.distance+1;
             }
             queue.insert(newVertex);
             i = getAdjUnvisitedVertex(graph, current.index);
@@ -93,18 +93,18 @@ function findGuardDistances(museum) {
 
 
 // var museum = [['o']];
- var museum =
-    [['o', 'g'],
-        ['o', 'o']];
+//  var museum =
+//     [['o', 'g'],
+//         ['o', 'o']];
 // var museum =
 //     [['o', 'o', 'g'],
 //         ['o', 'o', 'o'],
 //         ['o', 'o', 'o']];
-// // var museum=
-// [ [ 'o', 'o', 'o', 'g', 'o' ]
-//     // , [ 'o', 'o', 'w', 'o', 'o' ], [ 'o', 'g', 'o', 'o', 'w' ],
-//     // [ 'o', 'w', 'g', 'o', 'o' ], [ 'w', 'o', 'o', 'o', 'g' ]
-// ];
+ var museum=
+[ [ 'o', 'o', 'o', 'g', 'o' ],
+     [ 'o', 'o', 'w', 'o', 'o' ], [ 'o', 'g', 'o', 'o', 'w' ],
+    [ 'o', 'w', 'g', 'o', 'o' ], [ 'w', 'o', 'o', 'o', 'g' ]
+];
 StringUtils.printMatrix(museum, museum.length);
 var res = findGuardDistances(museum);
 StringUtils.printMatrix(res, res.length);
