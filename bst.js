@@ -40,18 +40,7 @@ BinarySearchTree.prototype.print = function(){
     }
 }
 
-function printlevels(root, arr, level){
-    if(!arr[level]){
-        arr[level]={str:''};
-    }
-    if(root == null){
-        arr[level].str+='null,';
-        return;
-    }
-    arr[level].str+=(root.data+',');
-    printlevels(root.left,arr,level+1);
-    printlevels(root.right,arr,level+1);
-}
+
 function inorder(root,obj){
 
     if(root == null){

@@ -1,6 +1,6 @@
 "use strict";
 
-var BinaryTree = require('./binaryTree');
+var BinaryTree = require('./data_structures/binaryTree');
 
 var str=process.argv[2];
 console.log("'"+str+"'");

@@ -4,9 +4,9 @@
 
 "use strict";
 
-var LinkedList=require('../data_structures/linkedList').LinkedList;
+var LinkedList=require('../data_structures/linkedList');
 
-var list = new LinkedList();
+var list = new LinkedList.LinkedList();
 list.insert(234);
 
 list.insert(1);
@@ -15,24 +15,24 @@ list.insert(6);
 list.insert(666);
 list.insert(7);
 list.print();
-list.first = reverse (list.first);
+list.first = LinkedList.mergeSort (list.first);
 list.print();
 
-//var popped=list.removeLast();
+//var popped=list1.removeLast();
 //console.log("popped.data="+popped.data);
-//list.print();
-//popped=list.removeLast();
+//list1.print();
+//popped=list1.removeLast();
 //console.log("popped.data="+popped.data);
-//list.print();
-//popped=list.removeLast();
+//list1.print();
+//popped=list1.removeLast();
 //console.log("popped.data="+popped.data);
-//list.print();
-//popped=list.removeLast();
+//list1.print();
+//popped=list1.removeLast();
 //console.log("popped.data="+popped.data);
-//list.print();
-//popped=list.removeLast();
+//list1.print();
+//popped=list1.removeLast();
 //console.log("popped.data="+popped.data);
-//list.print();
-//popped=list.removeLast();
+//list1.print();
+//popped=list1.removeLast();
 //console.log("popped.data="+popped.data);
-//list.print();
+//list1.print();

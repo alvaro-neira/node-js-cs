@@ -1,5 +1,5 @@
 /**
- * CREO QUE ESTA MALA!
+ * I think it's broken
  */
 
 "use strict";

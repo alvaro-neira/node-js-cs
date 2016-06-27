@@ -1,6 +1,6 @@
 "use strict";
 
-var Heap=require("./heap").Heap;
+var Heap=require("./data_structures/heap").Heap;
 
 var matrix = [ 
 [20, 40, 80], 
