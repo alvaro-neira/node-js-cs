@@ -1,5 +1,6 @@
 'use strict';
 
+var ASCII_POS=65;
 function decimal2binary(n){
     var rem=n % 2;
     var retVal=''+rem;
@@ -24,3 +25,4 @@ function binary2decimal(str){
 var n=decimal2binary(1099999);
 console.log(n);
 console.log(binary2decimal(n));
+
