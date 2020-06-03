@@ -1,26 +1,26 @@
-"use strict";
+'use strict';
 
-function Node(data){
+function Node(data) {
     this.data = data;
     this.left = null;
     this.right = null;
 }
 
-function BinaryTree(){
+function BinaryTree() {
     this.root = null;
 }
 
-function printlevels(root, arr, level){
-    if(!arr[level]){
-        arr[level]={str:''};
+function printlevels(root, arr, level) {
+    if (!arr[level]) {
+        arr[level] = {str: ''};
     }
-    if(root == null){
-        arr[level].str+='null,';
+    if (root == null) {
+        arr[level].str += 'null,';
         return;
     }
-    arr[level].str+=(root.data+',');
-    printlevels(root.left,arr,level+1);
-    printlevels(root.right,arr,level+1);
+    arr[level].str += (root.data + ',');
+    printlevels(root.left, arr, level + 1);
+    printlevels(root.right, arr, level + 1);
 }
 
 exports.Node = Node;

@@ -11,19 +11,19 @@
 
 "use strict"
 
-var StringUtils = require('../node-utils/lib/stringUtils');
-var Graph = require('../data_structures/graph').Graph;
-var Queue = require('../data_structures/queue').Queue;
+const StringUtils = require('../node-utils/lib/stringUtils');
+const Graph = require('../data_structures/graph').Graph;
+const Queue = require('../data_structures/queue').Queue;
 
-var bfs = require('../bfs').bfs;
-var getAdjUnvisitedVertex = require('../bfs').getAdjUnvisitedVertex;
+const bfs = require('../bfs').bfs;
+const getAdjUnvisitedVertex = require('../bfs').getAdjUnvisitedVertex;
 
 function findClosestGuardBFS(graph, N, row, column) {
-    var i = row * N + column;
+    let i = row * N + column;
     console.log('\nBFS starting: i=' + i);
-    var queue = new Queue();
+    let queue = new Queue();
     graph.vertices[i].distance = 0;
-    var current = graph.vertices[i];
+    let current = graph.vertices[i];
     visit(graph, i);
 
     queue.insert(current);
@@ -36,7 +36,7 @@ function findClosestGuardBFS(graph, N, row, column) {
             var letter = visit(graph, i);
             if (letter === 'g') {
                 graph.reset();
-                return current.distance+1;
+                return current.distance + 1;
             }
             queue.insert(newVertex);
             i = getAdjUnvisitedVertex(graph, current.index);
@@ -53,20 +53,20 @@ function visit(graph, i) {
 }
 
 function findGuardDistances(museum) {
-    var graph = new Graph();
-    var N = museum.length;
-    var i;
-    var j;
+    let graph = new Graph();
+    let N = museum.length;
+    let i;
+    let j;
     for (i = 0; i < N; i++) {
         for (j = 0; j < N; j++) {
             graph.addVertex(museum[i][j]);
-            var currentIndex = graph.vertexCount - 1;
-            var c = i * N + j;
+            let currentIndex = graph.vertexCount - 1;
+            let c = i * N + j;
             console.log(currentIndex, c);
-            var up = i > 0 ? (i - 1) * N + j : -1;
-            var down = i < (N - 1) ? (i + 1) * N + j : -1;
-            var left = j > 0 ? i * N + j - 1 : -1;
-            var right = j < (N - 1) ? i * N + j + 1 : -1;
+            let up = i > 0 ? (i - 1) * N + j : -1;
+            let down = i < (N - 1) ? (i + 1) * N + j : -1;
+            let left = j > 0 ? i * N + j - 1 : -1;
+            let right = j < (N - 1) ? i * N + j + 1 : -1;
             console.log(up, down, left, right);
             if (up >= 0) graph.addEdge(currentIndex, up);
             if (down >= 0) graph.addEdge(currentIndex, down);
@@ -100,11 +100,11 @@ function findGuardDistances(museum) {
 //     [['o', 'o', 'g'],
 //         ['o', 'o', 'o'],
 //         ['o', 'o', 'o']];
- var museum=
-[ [ 'o', 'o', 'o', 'g', 'o' ],
-     [ 'o', 'o', 'w', 'o', 'o' ], [ 'o', 'g', 'o', 'o', 'w' ],
-    [ 'o', 'w', 'g', 'o', 'o' ], [ 'w', 'o', 'o', 'o', 'g' ]
-];
+const museum =
+    [['o', 'o', 'o', 'g', 'o'],
+        ['o', 'o', 'w', 'o', 'o'], ['o', 'g', 'o', 'o', 'w'],
+        ['o', 'w', 'g', 'o', 'o'], ['w', 'o', 'o', 'o', 'g']
+    ];
 StringUtils.printMatrix(museum, museum.length);
-var res = findGuardDistances(museum);
+let res = findGuardDistances(museum);
 StringUtils.printMatrix(res, res.length);

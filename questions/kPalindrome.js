@@ -18,15 +18,15 @@
 
  */
 
-"use strict";
+'use strict';
 
-var StringUtils=require('../node-utils/lib/stringUtils');
+const StringUtils = require('../node-utils/lib/stringUtils');
 
 function modifiedLevenshtein(word1, word2) {
-    var array_t = [];
-    var array_u = [];
-    var i;
-    var j;
+    let array_t = [];
+    let array_u = [];
+    let i;
+    let j;
     if (!word1.length) {
         return word2.length;
     }
@@ -43,10 +43,10 @@ function modifiedLevenshtein(word1, word2) {
                 array_u[j] = array_t[j - 1];
             } else {
                 array_u[j] = Math.min(
-                        // array_t[j - 1], //substitution out
-                        array_t[j],
-                        array_u[j - 1]
-                    ) + 1;
+                    // array_t[j - 1], //substitution out
+                    array_t[j],
+                    array_u[j - 1]
+                ) + 1;
             }
         }
         array_t = array_u;
@@ -68,15 +68,15 @@ function modifiedLevenshtein(word1, word2) {
     ['hola', 'holo', 8],
     ['mississippi', 'swiss miss', 8]
 ].forEach(function (v) {
-    var a = v[0], b = v[1], t = v[2], d = modifiedLevenshtein(a, b);
+    let a = v[0], b = v[1], t = v[2], d = modifiedLevenshtein(a, b);
     console.log('levenstein("' + a + '","' + b + '") is ' + d);
 });
 
 function levenshtein(word1, word2) {
-    var array_t = [];
-    var array_u = [];
-    var i;
-    var j;
+    let array_t = [];
+    let array_u = [];
+    let i;
+    let j;
     if (!word1.length) {
         return word2.length;
     }
@@ -93,10 +93,10 @@ function levenshtein(word1, word2) {
                 array_u[j] = array_t[j - 1];
             } else {
                 array_u[j] = Math.min(
-                        array_t[j - 1],
-                        array_t[j],
-                        array_u[j - 1]
-                    ) + 1;
+                    array_t[j - 1],
+                    array_t[j],
+                    array_u[j - 1]
+                ) + 1;
             }
         }
         array_t = array_u;
@@ -104,10 +104,10 @@ function levenshtein(word1, word2) {
     return array_u[word2.length];
 }
 
-function isKPalindrome(word,k){
-    return modifiedLevenshtein(word,StringUtils.invert(word)) <= 2*k;
+function isKPalindrome(word, k) {
+    return modifiedLevenshtein(word, StringUtils.invert(word)) <= 2 * k;
 }
 
-console.log(isKPalindrome('abxa',1));
-console.log(isKPalindrome('abdxa',1));
-console.log(isKPalindrome('abdxa',2));
+console.log(isKPalindrome('abxa', 1));
+console.log(isKPalindrome('abdxa', 1));
+console.log(isKPalindrome('abdxa', 2));

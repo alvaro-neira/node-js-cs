@@ -29,8 +29,7 @@ function nTranslations(number) {
 function isValid(s) {
     if (s.length === 1) {
         return 1;
-    }
-    else if (s.length == 2) {
+    } else if (s.length == 2) {
         return parseInt(s, 10) <= 26;
     }
     return 1;

@@ -4,9 +4,9 @@
 
 "use strict";
 
-var Graph=require('../data_structures/graph').Graph;
+const Graph = require('../data_structures/graph').Graph;
 
-var gr=new Graph();
+const gr = new Graph();
 gr.addVertex('S');
 gr.addVertex('A');
 gr.addVertex('B');

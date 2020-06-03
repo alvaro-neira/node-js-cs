@@ -1,0 +1,7 @@
+{
+  "name": "node-js-cs",
+  "version": "1.0.0",
+  "dependencies": {
+    "log4js": "^6.3.0"
+  }
+}

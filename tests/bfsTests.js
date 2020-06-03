@@ -6,7 +6,9 @@
  * This is
  * http://www.tutorialspoint.com/data_structures_algorithms/breadth_first_traversal_in_c.htm
  */
-var gr=new Graph();
+const Graph = require('../data_structures/graph').Graph;
+
+let gr = new Graph();
 gr.addVertex('S');
 gr.addVertex('A');
 gr.addVertex('B');
@@ -23,9 +25,9 @@ gr.addEdge(3, 4);    // C - D
 gr.printVertices();
 gr.printAdjacencyMatrix();
 
-bfs(gr,0);
+// bfs(gr,0);
 
-gr=new Graph();
+gr = new Graph();
 
 /**
  * This is
@@ -55,4 +57,4 @@ gr.addEdge(4, 7);
 gr.printVertices();
 gr.printAdjacencyMatrix();
 
-bfs(gr,0);
+// bfs(gr,0);

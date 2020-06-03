@@ -8,33 +8,33 @@
 
 'use strict';
 
-var ASCII_POS=65;
+const ASCII_POS = 65;
 
-
-function changeBaseExcel(n,base){
+function changeBaseExcel(n, base) {
     // n=n+1;
-    var rem=n % base;
-    var retVal=''+number2excel(rem);
+    let rem = n % base;
+    let retVal = '' + number2excel(rem);
 
-    while (n>0){
-        n=Math.floor(n/base);
-        if(n===0){
+    while (n > 0) {
+        n = Math.floor(n / base);
+        if (n === 0) {
             break;
         }
-        n=n-1;
-        rem=(n)%base;
+        n = n - 1;
+        rem = (n) % base;
 
-        retVal=number2excel(rem)+retVal;
+        retVal = number2excel(rem) + retVal;
 
     }
     return retVal
 }
 
-function number2excel(n,base){
-    base=base||26;
-    return String.fromCharCode(n+ASCII_POS+26-base);
+function number2excel(n, base) {
+    base = base || 26;
+    return String.fromCharCode(n + ASCII_POS + 26 - base);
 }
-var i;
-for(i=0;i<1000;i++){
-    console.log(changeBaseExcel(i,26));
+
+let i;
+for (i = 0; i < 1000; i++) {
+    console.log(changeBaseExcel(i, 26));
 }

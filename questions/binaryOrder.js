@@ -5,15 +5,16 @@
 
  */
 
-"use strict";
+'use strict';
 
-var NumberUtils=require('../node-utils/lib/numberUtils');
-function binaryToGray(num){
-    return (num >> 1)^num;
+const NumberUtils = require('../node-utils/lib/numberUtils');
+
+function binaryToGray(num) {
+    return (num >> 1) ^ num;
 }
 
-var n=5;
-var i;
-for(i=0;i<=Math.pow(2,n-1);i++){
+let n = 5;
+let i;
+for (i = 0; i <= Math.pow(2, n - 1); i++) {
     console.log(NumberUtils.decimal2binary(binaryToGray(i)));
 }

@@ -1,22 +1,21 @@
-"use strict";
+'use strict';
 
-function Node(data){
+function Node(data) {
     this.data = data;
     this.next = null;
 }
 
-function LinkedList(){
+function LinkedList() {
     this.first = null;
     this.last = null;
 }
 
-LinkedList.prototype.isEmpty = function(){
-    return this.first===null && this.last===null;
+LinkedList.prototype.isEmpty = function () {
+    return this.first === null && this.last === null;
 }
 
-
-LinkedList.prototype.insert = function(data){
-    if(this.first === null){
+LinkedList.prototype.insert = function (data) {
+    if (this.first === null) {
         this.first = new Node(data);
         this.last = this.first;
         return;
@@ -25,28 +24,28 @@ LinkedList.prototype.insert = function(data){
     this.last = this.last.next;
 }
 
-LinkedList.prototype.removeFirst = function(){
-    var retVal = this.first;
-    if(this.first.next){
+LinkedList.prototype.removeFirst = function () {
+    let retVal = this.first;
+    if (this.first.next) {
         this.first = this.first.next
-    }else{
+    } else {
         this.first = null;
         this.last = null;
     }
     return retVal;
 }
 
-LinkedList.prototype.removeLast = function(){
-    if(this.isEmpty()){
+LinkedList.prototype.removeLast = function () {
+    if (this.isEmpty()) {
         console.log('ERROR: empty linked list');
         return null;
     }
-    var retVal = this.last;
-    var aux=this.first;
-    if(!aux.next){
+    let retVal = this.last;
+    let aux = this.first;
+    if (!aux.next) {
         this.first = null;
         this.last = null;
-    }else {
+    } else {
         while (aux.next.next) {
             aux = aux.next;
         }
@@ -56,35 +55,35 @@ LinkedList.prototype.removeLast = function(){
     return retVal;
 }
 
-LinkedList.prototype.print = function(){
-    var aux = this.first;
-    var str = "";
-    while(aux!=null){
-        str+=aux.data+"->";
+LinkedList.prototype.print = function () {
+    let aux = this.first;
+    let str = "";
+    while (aux != null) {
+        str += aux.data + "->";
         aux = aux.next;
     }
-    console.log(""+str);
+    console.log("" + str);
 }
 
 
-function swap(node){
-    if(!node || !node.next){
+function swap(node) {
+    if (!node || !node.next) {
         return node;
     }
-    var tmp = node.next;
+    let tmp = node.next;
     node.next = swap(tmp.next);
     tmp.next = node;
     return tmp;
 }
-    
-function reverse(node){
 
-    var a = node;
-    
-    var b = a.next;
-    var c = b ? b.next : null;
+function reverse(node) {
+
+    let a = node;
+
+    let b = a.next;
+    let c = b ? b.next : null;
     node.next = null;
-    while(b){
+    while (b) {
         b.next = a;
         a = b;
         b = c;
@@ -93,47 +92,48 @@ function reverse(node){
     return b ? b : a;
 }
 
-function _getMiddle(node){
-    if(!node){
+function _getMiddle(node) {
+    if (!node) {
         return node;
     }
-    var slow=node;
-    var fast=node;
-    while(fast.next && fast.next.next){
-        slow=slow.next;
-        fast=fast.next.next;
+    let slow = node;
+    let fast = node;
+    while (fast.next && fast.next.next) {
+        slow = slow.next;
+        fast = fast.next.next;
     }
     return slow;
 }
 
-function merge(node1, node2){
-    var dummyHead=new Node();
-    var curr=dummyHead;
-    while(node1 && node2){
-        if(node1.data<node2.data){
-            curr.next=node1;
-            node1=node1.next;
-        }else{
-            curr.next=node2;
-            node2=node2.next;
+function merge(node1, node2) {
+    let dummyHead = new Node();
+    let curr = dummyHead;
+    while (node1 && node2) {
+        if (node1.data < node2.data) {
+            curr.next = node1;
+            node1 = node1.next;
+        } else {
+            curr.next = node2;
+            node2 = node2.next;
         }
-        curr=curr.next;
+        curr = curr.next;
     }
-    if(!node1){
-        curr.next=node2;
-    }else{
-        curr.next=node1;
+    if (!node1) {
+        curr.next = node2;
+    } else {
+        curr.next = node1;
     }
     return dummyHead.next;
 }
-function mergeSort(node){
-    if(!node || !node.next){
+
+function mergeSort(node) {
+    if (!node || !node.next) {
         return node;
     }
-    var middle=_getMiddle(node);
-    var half=middle.next;
-    middle.next=null;
-    return merge(mergeSort(node),mergeSort(half));
+    let middle = _getMiddle(node);
+    let half = middle.next;
+    middle.next = null;
+    return merge(mergeSort(node), mergeSort(half));
 }
 
 exports.merge = merge;
