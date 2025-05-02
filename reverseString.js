@@ -7,7 +7,7 @@ console.log("'"+str+"'");
 console.log("reversed="+reverseSentence(str));
 
 function reverseSentence(str){
-    var nOcurrencies = numberOfOcurrencies(str,' ');
+    var nOcurrencies = numberOfOccurrences(str,' ');
     var index=str.lastIndexOf(' ');
     var counter = 0;
     var writeIndex = 0;
@@ -31,7 +31,7 @@ function replaceAt(str,index, character) {
     return str.substr(0, index) + character + str.substr(index+character.length);
 }
 
-function numberOfOcurrencies(str,substr){
+function numberOfOccurrences(str, substr){
     var retVal = 0;
     var index = str.indexOf(substr);
     while(index!=-1){
